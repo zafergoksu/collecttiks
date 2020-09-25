@@ -14,13 +14,14 @@ spec:
         spec:
             containers:
                 - name: auth
-                  image: zgoksu/auth
+                  image: gcr.io/collecttiks/auth
 ---
 apiVersion: v1
 kind: Service
 metadata:
     name: auth-srv
 spec:
+    type: ClusterIP
     selector:
         app: auth
     ports:

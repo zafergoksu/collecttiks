@@ -6,10 +6,12 @@ deploy:
             - ./infra/k8s/*
 build:
     # when building image, don't push to docker hub
-    local:
-        push: false
+    #local:
+        #push: false
+    googleCloudBuild:
+        projectId: collecttiks
     artifacts:
-        - image: zgoksu/auth
+        - image: gcr.io/collecttiks/auth
           context: auth
           docker:
               dockerfile: Dockerfile
