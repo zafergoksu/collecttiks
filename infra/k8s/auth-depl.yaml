@@ -1,3 +1,4 @@
+#image: gcr.io/collecttiks/auth
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -14,7 +15,7 @@ spec:
         spec:
             containers:
                 - name: auth
-                  image: gcr.io/collecttiks/auth
+                  image: zgoksu/auth
                   env:
                       - name: JWT_KEY
                         valueFrom:
