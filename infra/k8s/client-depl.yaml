@@ -14,7 +14,8 @@ spec:
         spec:
             containers:
                 - name: client
-                  image: zgoksu/client
+                  #image: zgoksu/client
+                  image: gcr.io/collecttiks/client
 ---
 apiVersion: v1
 kind: Service

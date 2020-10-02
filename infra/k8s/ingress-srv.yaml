@@ -7,7 +7,7 @@ metadata:
         nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
     rules:
-        - host: collecttiks.dev
+        - host: collecttiks.com
           http:
               paths:
                   # Ordered from greatest importance to least, matches regex in precidence if none can be found
