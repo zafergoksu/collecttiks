@@ -729,6 +729,19 @@
   dependencies:
     "@types/yargs-parser" "*"
 
+"@zgoksutickets/common-utils@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@zgoksutickets/common-utils/-/common-utils-1.0.4.tgz#780632f85f0200074b337d2f0f95b6794d10d034"
+  integrity sha512-ArQL1E1wn7LsR1xHCswqqHXPXiqt49gXiXtEEEMRWMeTTLAebLOH3jNf9p2REufiGQt56tH6QswBwIvMvClsOA==
+  dependencies:
+    "@types/cookie-session" "^2.0.41"
+    "@types/express" "^4.17.8"
+    "@types/jsonwebtoken" "^8.5.0"
+    cookie-session "^1.4.0"
+    express "^4.17.1"
+    express-validator "^6.6.1"
+    jsonwebtoken "^8.5.1"
+
 abab@^2.0.3:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.5.tgz#c0b678fb32d60fc1219c784d6a826fe385aeb79a"

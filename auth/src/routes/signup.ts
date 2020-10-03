@@ -1,9 +1,8 @@
 import express, { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
+import { validateRequest, BadRequestError } from '@zgoksutickets/common-utils';
 
-import { validateRequest } from '../middleware/validate-request';
 import { body } from 'express-validator';
-import { BadRequestError } from '../errors/bad-request-error';
 
 import User from '../models/user';
 
