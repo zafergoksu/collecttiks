@@ -29,3 +29,12 @@ build:
               manual:
                   - src: '**/*.js'
                     dest: .
+        - image: gcr.io/collecttiks/tickets
+        #- image: zgoksu/tickets
+          context: tickets
+          docker:
+              dockerfile: Dockerfile
+          sync:
+              manual:
+                  - src: 'src/**/*.ts'
+                    dest: .
