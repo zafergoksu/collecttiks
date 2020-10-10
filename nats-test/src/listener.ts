@@ -15,15 +15,15 @@ stan.on('connect', () => {
         process.exit();
     });
 
-    const options = stan.subscriptionOptions().setManualAckMode(true);
+    const options = stan
+        .subscriptionOptions()
+        .setManualAckMode(true)
+        .setDeliverAllAvailable()
+        .setDurableName('accounting-service');
 
     // Create a queue group to handle events in a round robin fashion with messages (events) sent to the same queue group
     // This is to handle concurrency issues with the same message being handle at the same time with different listeners
-    const subscription = stan.subscribe(
-        'ticket:created',
-        'listenerQueueGroup',
-        options
-    );
+    const subscription = stan.subscribe('ticket:created', 'queue-group-name', options);
 
     subscription.on('message', (msg: Message) => {
         const data = msg.getData();
