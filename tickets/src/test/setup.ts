@@ -12,6 +12,8 @@ declare global {
     }
 }
 
+jest.mock('../nats-wrapper');
+
 let mongo: any;
 beforeAll(async () => {
     process.env.JWT_KEY = 'asdf';
@@ -25,6 +27,10 @@ beforeAll(async () => {
 });
 
 beforeEach(async () => {
+    // Clear all mock data specifically on mock functions called to remove data pollution.
+    // A jest mock function is called in the mock nats-wrapper to call the nats client to publish,
+    // ensures that the function was called but is called in every test. Reduce that pollution.
+    jest.clearAllMocks();
     const collections = await mongoose.connection.db.collections();
 
     for (let collection of collections) {
