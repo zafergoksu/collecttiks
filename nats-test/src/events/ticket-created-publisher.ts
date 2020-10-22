@@ -1,6 +1,6 @@
-import { Publisher } from './base-publisher';
-import { TicketCreatedEvent } from './ticket-created-event';
-import { Subjects } from './subjects';
+import { Publisher } from '@zgoksutickets/common-utils';
+import { TicketCreatedEvent } from '@zgoksutickets/common-utils';
+import { Subjects } from '@zgoksutickets/common-utils';
 
 export class TicketCreatedPublisher extends Publisher<TicketCreatedEvent> {
     subject: Subjects.TicketCreated = Subjects.TicketCreated;
