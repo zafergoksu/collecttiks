@@ -11,8 +11,8 @@ build:
     googleCloudBuild:
         projectId: collecttiks
     artifacts:
-        - image: gcr.io/collecttiks/auth
-        #- image: zgoksu/auth
+        #- image: gcr.io/collecttiks/auth
+        - image: zgoksu/auth
           context: auth
           docker:
               dockerfile: Dockerfile
@@ -20,8 +20,8 @@ build:
               manual:
                   - src: 'src/**/*.ts'
                     dest: .
-        #- image: zgoksu/client
-        - image: gcr.io/collecttiks/client
+        #- image: gcr.io/collecttiks/client
+        - image: zgoksu/client
           context: client
           docker:
               dockerfile: Dockerfile
@@ -29,8 +29,8 @@ build:
               manual:
                   - src: '**/*.js'
                     dest: .
-        - image: gcr.io/collecttiks/tickets
-        #- image: zgoksu/tickets
+        #- image: gcr.io/collecttiks/tickets
+        - image: zgoksu/tickets
           context: tickets
           docker:
               dockerfile: Dockerfile
@@ -38,8 +38,8 @@ build:
               manual:
                   - src: 'src/**/*.ts'
                     dest: .
-        - image: gcr.io/collecttiks/orders
-        #- image: zgoksu/orders
+        #- image: gcr.io/collecttiks/orders
+        - image: zgoksu/orders
           context: orders
           docker:
               dockerfile: Dockerfile
