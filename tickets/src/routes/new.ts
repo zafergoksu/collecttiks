@@ -24,28 +24,23 @@ router.post(
     validateRequest,
     async (req: Request, res: Response) => {
         const { title, price } = req.body;
-        const session = await db.startSession();
-        session.startTransaction();
-        try {
-            const ticket = Ticket.build({
-                title,
-                price,
-                userId: req.currentUser!.id,
-            });
+        //const session = await db.startSession();
+        //session.startTransaction();
+        const ticket = Ticket.build({
+            title,
+            price,
+            userId: req.currentUser!.id,
+        });
 
-            await ticket.save();
-            new TicketCreatedPublisher(natsWrapper.client).publish({
-                id: ticket.id,
-                title: ticket.title,
-                price: ticket.price,
-                userId: ticket.userId,
-            });
-            await session.commitTransaction();
-            res.status(201).send(ticket);
-        } catch (err) {
-            await session.abortTransaction();
-            throw new DatabaseConnectionError();
-        }
+        await ticket.save();
+        new TicketCreatedPublisher(natsWrapper.client).publish({
+            id: ticket.id!,
+            title: ticket.title,
+            price: ticket.price,
+            userId: ticket.userId,
+        });
+        //await session.commitTransaction();
+        res.status(201).send(ticket);
     }
 );
 
