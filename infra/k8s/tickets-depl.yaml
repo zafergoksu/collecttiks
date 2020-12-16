@@ -14,8 +14,8 @@ spec:
         spec:
             containers:
                 - name: tickets
-                  #image: zgoksu/tickets
-                  image: gcr.io/collecttiks/tickets
+                  image: zgoksu/tickets
+                  #image: gcr.io/collecttiks/tickets
                   env:
                       - name: NATS_URL
                         value: 'http://nats-srv:4222'
