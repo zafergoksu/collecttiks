@@ -4,9 +4,11 @@ import {
     validateRequest,
     NotFoundError,
     NotAuthorizedError,
+    DatabaseConnectionError,
     requireAuth,
 } from '@zgoksutickets/common-utils';
 import Ticket from '../models/ticket';
+import db from 'mongoose';
 import { TicketUpdatedPublisher } from '../events/publishers/ticket-updated-publisher';
 import { natsWrapper } from '../nats-wrapper';
 
@@ -33,20 +35,29 @@ router.put(
             throw new NotAuthorizedError();
         }
 
-        ticket.set({
-            title: req.body.title,
-            price: req.body.price,
-        });
-        await ticket.save();
+        const session = await db.startSession();
+        session.startTransaction();
 
-        new TicketUpdatedPublisher(natsWrapper.client).publish({
-            id: ticket.id!,
-            title: ticket.title,
-            price: ticket.price,
-            userId: ticket.userId,
-        });
+        try {
+            ticket.set({
+                title: req.body.title,
+                price: req.body.price,
+            });
+            await ticket.save();
 
-        res.send(ticket);
+            new TicketUpdatedPublisher(natsWrapper.client).publish({
+                id: ticket.id!,
+                title: ticket.title,
+                price: ticket.price,
+                userId: ticket.userId,
+            });
+
+            await session.commitTransaction();
+            res.send(ticket);
+        } catch (err) {
+            await session.abortTransaction();
+            throw new DatabaseConnectionError();
+        }
     }
 );
 
