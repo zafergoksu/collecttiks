@@ -1,4 +1,4 @@
 [submodule "common-utils"]
 	path = common-utils
-	url = https://www.github.com/zgoksu/common-utils
+	url = https://www.github.com/zgoksu/common-utils.git
 	branch = master
