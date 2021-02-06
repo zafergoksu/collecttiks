@@ -730,9 +730,9 @@
     "@types/yargs-parser" "*"
 
 "@zgoksutickets/common-utils@^1.0.7":
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/@zgoksutickets/common-utils/-/common-utils-1.0.11.tgz#a3be16344bd0529f4beb5e90a8aee6394bbaab36"
-  integrity sha512-c5TwP22ogYLC8xXpU6UUGhAD71xu49Lua6aXHuFxlopQHA/d87osrCisgqDgB4JWgj6MAuiRhcnKcEjSOXuHag==
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@zgoksutickets/common-utils/-/common-utils-1.0.12.tgz#cc99d54d03b56225461071f974ee2ed5c341f863"
+  integrity sha512-OHX2Yj3Z/sOouvnTvm1ngVeY/dXFs5xJ585E2yPjfhIAliOpAqpP/LiDV9eHL1IHXm4x0qGEw2VEfrQYgz9MJA==
   dependencies:
     "@types/cookie-session" "^2.0.41"
     "@types/express" "^4.17.8"
