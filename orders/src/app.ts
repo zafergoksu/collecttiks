@@ -7,10 +7,10 @@ import {
     currentUser,
 } from '@zgoksutickets/common-utils';
 
-import createTicketRouter from './routes/new';
-import showTicketRouter from './routes/show';
-import indexTicketRouter from './routes/index';
-import updateTicketRouter from './routes/update';
+import deleteOrderRouter from './routes/delete';
+import showOrderRouter from './routes/show';
+import indexOrderRouter from './routes/index';
+import newOrderRouter from './routes/new';
 
 const app = express();
 app.set('trust proxy', true);
@@ -27,10 +27,10 @@ app.use(
 app.use(currentUser);
 
 // Route handlers
-app.use(createTicketRouter);
-app.use(showTicketRouter);
-app.use(indexTicketRouter);
-app.use(updateTicketRouter);
+app.use(deleteOrderRouter);
+app.use(showOrderRouter);
+app.use(indexOrderRouter);
+app.use(newOrderRouter);
 
 // Other routes get precidence to route string paths, the glob modifier captures everything else
 // that fails
