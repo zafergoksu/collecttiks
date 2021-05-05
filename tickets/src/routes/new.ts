@@ -39,6 +39,7 @@ router.post(
                 title: ticket.title,
                 price: ticket.price,
                 userId: ticket.userId,
+                version: ticket.version,
             });
             await session.commitTransaction();
             res.status(201).send(ticket);
