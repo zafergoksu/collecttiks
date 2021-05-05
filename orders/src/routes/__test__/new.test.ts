@@ -19,6 +19,7 @@ describe('new.ts', () => {
 
     it('returns an error if the ticket is already reserved', async () => {
         const ticket = Ticket.build({
+            id: mongoose.Types.ObjectId().toHexString(),
             title: 'concert',
             price: 20,
         });
@@ -43,6 +44,7 @@ describe('new.ts', () => {
 
     it('reserves a ticket', async () => {
         const ticket = Ticket.build({
+            id: mongoose.Types.ObjectId().toHexString(),
             title: 'concert',
             price: 20,
         });
@@ -62,6 +64,7 @@ describe('new.ts', () => {
 
     it('emits an order created event', async () => {
         const ticket = Ticket.build({
+            id: mongoose.Types.ObjectId().toHexString(),
             title: 'concert',
             price: 20,
         });

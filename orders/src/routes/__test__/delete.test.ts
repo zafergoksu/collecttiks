@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import { OrderStatus } from '@zgoksutickets/common-utils';
 import request from 'supertest';
 import app from '../../app';
@@ -9,6 +10,7 @@ describe('delete.ts', () => {
     it('should mark an order as cancelled', async () => {
         // Create a ticket with Ticket model
         const ticket = Ticket.build({
+            id: mongoose.Types.ObjectId().toHexString(),
             title: 'concert',
             price: 20,
         });
@@ -37,6 +39,7 @@ describe('delete.ts', () => {
     it('emits an order cancelled event', async () => {
         // Create a ticket with Ticket model
         const ticket = Ticket.build({
+            id: mongoose.Types.ObjectId().toHexString(),
             title: 'concert',
             price: 20,
         });
