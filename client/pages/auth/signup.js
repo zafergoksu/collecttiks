@@ -5,14 +5,14 @@ import useRequest from '../../hooks/use-request';
 const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const {errors, doRequest} = useRequest({
+    const { errors, doRequest } = useRequest({
         url: '/api/users/signup',
         method: 'post',
         body: {
             email,
-            password
+            password,
         },
-        onSuccess: () => Router.push('/')
+        onSuccess: () => Router.push('/'),
     });
 
     const onSubmit = async (event) => {

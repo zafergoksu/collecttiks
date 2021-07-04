@@ -7,6 +7,7 @@ describe('show.ts', () => {
     it('should display an order given by an id of a valid user', async () => {
         // Create a ticket
         const ticket = Ticket.build({
+            id: mongoose.Types.ObjectId().toHexString(),
             title: 'concert',
             price: 20,
         });
@@ -43,11 +44,13 @@ describe('show.ts', () => {
     it('should return an error if a user already has an order of ticket', async () => {
         // Create a ticket
         const ticket = Ticket.build({
+            id: mongoose.Types.ObjectId().toHexString(),
             title: 'concert',
             price: 20,
         });
 
         const anotherTicket = Ticket.build({
+            id: mongoose.Types.ObjectId().toHexString(),
             title: 'concert',
             price: 20,
         });
