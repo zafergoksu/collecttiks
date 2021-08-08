@@ -5,11 +5,7 @@ import request from 'supertest';
 import app from '../app';
 
 declare global {
-    namespace NodeJS {
-        interface Global {
-            signin(): string[];
-        }
-    }
+    var signin: () => string[];
 }
 
 jest.mock('../nats-wrapper');

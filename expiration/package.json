@@ -19,7 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/bull": "^3.15.2",
-    "@zgoksutickets/common-utils": "^1.0.7",
+    "@zgoksutickets/common-utils": "^1.0.23",
     "bull": "^3.26.0",
     "node-nats-streaming": "^0.2.6",
     "ts-node-dev": "^1.0.0-pre.63",
