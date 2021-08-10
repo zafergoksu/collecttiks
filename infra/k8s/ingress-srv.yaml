@@ -12,6 +12,10 @@ spec:
               paths:
                   # Ordered from greatest importance to least, matches regex in precidence if none can be found
                   # for first path, try to match with succeeding paths
+                  - path: /api/payments/?(.*)
+                    backend:
+                        serviceName: payments-srv
+                        servicePort: 3000
                   - path: /api/users/?(.*)
                     backend:
                         serviceName: auth-srv
