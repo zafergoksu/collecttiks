@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import app from '../../app';
 import { stripe } from '../../stripe';
 import Order from '../../models/order';
+import Payment from '../../models/payment';
 
 jest.mock('../../stripe');
 
@@ -80,8 +81,19 @@ describe('new.ts', () => {
             .expect(201);
 
         const chargeOptions = (stripe.charges.create as jest.Mock).mock.calls[0][0];
+        const chargeResult = await (stripe.charges.create as jest.Mock).mock.results[0].value;
+
         expect(chargeOptions.source).toEqual('tok_visa');
         expect(chargeOptions.amount).toEqual(20 * 100);
         expect(chargeOptions.currency).toEqual('usd');
+
+        const payment = await Payment.findOne({
+            orderId: order.id,
+            stripeId: chargeResult.id,
+        });
+
+        expect(payment).toBeDefined();
+        expect(payment!.orderId).toEqual(order.id);
+        expect(payment!.stripeId).toEqual(chargeResult.id);
     });
 });
