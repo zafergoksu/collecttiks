@@ -6,6 +6,7 @@ import {
     NotFoundError,
     currentUser,
 } from '@zgoksutickets/common-utils';
+import { createChargeRouter } from './routes/new';
 
 const app = express();
 app.set('trust proxy', true);
@@ -22,6 +23,7 @@ app.use(
 app.use(currentUser);
 
 // Route handlers
+app.use(createChargeRouter);
 
 // Other routes get precidence to route string paths, the glob modifier captures everything else
 // that fails
