@@ -1,5 +1,5 @@
 # CollectTiks
-Learning microservice patterns and infrastructure, alongside with knowledge from basic NATS streaming event-bus for concurrent event messages. 
+A learning repository on microservice patterns and infrastructure, alongside learning how to use the NATS Streaming Server to handle concurrent messages in an event-bus through publishing and listening to messages.
 
 This repository is demonstration of ability and for personal learning not for any production.
 
