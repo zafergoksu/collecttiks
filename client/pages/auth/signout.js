@@ -3,11 +3,11 @@ import Router from 'next/router';
 import useRequest from '../../hooks/use-request';
 
 const SignOut = () => {
-    const { errors, doRequest } = useRequest({
+    const { doRequest } = useRequest({
         url: '/api/users/signout',
         method: 'post',
         body: {},
-        onSuccess: () => Router.push('/')
+        onSuccess: () => Router.push('/'),
     });
 
     useEffect(() => {
