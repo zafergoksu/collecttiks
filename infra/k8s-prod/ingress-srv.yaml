@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+    name: ingress-service
+    annotations:
+        kubernetes.io/ingress.class: nginx
+        nginx.ingress.kubernetes.io/use-regex: 'true'
+spec:
+    rules:
+        - host: collecttiks.com
+          http:
+              paths:
+                  # Ordered from greatest importance to least, matches regex in precidence if none can be found
+                  # for first path, try to match with succeeding paths
+                  - path: /api/payments/?(.*)
+                    backend:
+                        serviceName: payments-srv
+                        servicePort: 3000
+                  - path: /api/users/?(.*)
+                    backend:
+                        serviceName: auth-srv
+                        servicePort: 3000
+                  - path: /api/tickets/?(.*)
+                    backend:
+                        serviceName: tickets-srv
+                        servicePort: 3000
+                  - path: /api/orders/?(.*)
+                    backend:
+                        serviceName: orders-srv
+                        servicePort: 3000
+                  - path: /?(.*)
+                    backend:
+                        serviceName: client-srv
+                        servicePort: 3000
+
